@@ -1,0 +1,30 @@
+{
+  "name": "aspirity-task",
+  "version": "1.0.0",
+  "description": "BestRunner app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "express"
+  ],
+  "author": "Lena Kim <lenahomerus@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.5.2",
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.0",
+    "reactstrap": "^8.5.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.4"
+  }
+}
