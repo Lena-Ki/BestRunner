@@ -1,8 +1,8 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { CreateSession } from './pages/CreateSession'
+import SessionsForm from './pages/SessionForm'
 import { EditSession } from './pages/EditSession'
-import { SessionsPage } from './pages/SessionsPage'
+import SessionsPage from './pages/SessionsPage'
 
 export const UseRoutes = () => {
   return (
@@ -11,7 +11,7 @@ export const UseRoutes = () => {
         <SessionsPage />
       </Route>
       <Route path="/create" exact>
-        <CreateSession />
+        <SessionsForm />
       </Route>
       <Route path="/edit/:id" exact>
         <EditSession />
