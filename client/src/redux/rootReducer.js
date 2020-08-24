@@ -1,4 +1,4 @@
-import { CREATE_SESSION } from "./types"
+import { CREATE_SESSION } from './types'
 
 const initialState = {
   sessions: [
