@@ -4,7 +4,7 @@ import _ from 'lodash'
 const initialState = {
   sort: 'asc',
   sortField: 'date',
-  filter: '',
+  filter: 'all',
   sessions: [
     {id: '123', date: '2020.09.20', type: 'cycling', distance: 5.6, comment: 'in the city center'},
     {id: '1123', date: '2020.08.23', type: 'jogging', distance: 9.5, comment: '5 kkal burnt'},
@@ -18,12 +18,12 @@ export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     // create new session
     case CREATE_SESSION:
-      return { sessions: [...state.sessions, action.payload] }
+      return { ...state, sessions: [...state.sessions, action.payload]}
     // delete selected session
-      case DELETE_SESSION:
-        return { sessions: state.sessions.filter(item => {
-          return item.id !== action.payload
-        })}
+    case DELETE_SESSION:
+      return { ...state, sessions: state.sessions.filter(item => {
+        return item.id !== action.payload
+      })}
     // sort sessions by field types
     case SORT_FIELD:
       const cloneData = state.sessions.concat()
@@ -31,17 +31,13 @@ export const rootReducer = (state = initialState, action) => {
       let orderedData = {}
       if (action.payload === 'date') {
         orderedData = _.orderBy(cloneData, function(item) {
-          console.log('item: ', new Date(item.date))
           return new Date(item.date)
         }, sortType);
       } else orderedData = _.orderBy(cloneData, action.payload, sortType)
-      return { sort: sortType, sessions: [...orderedData] }
+      return { ...state, sort: sortType, sessions: [...orderedData], }
     // filter sessions by activity type
     case FILTER_FIELD:
-      const copyData = state.sessions.concat()
-      let filteredData = _.filter(copyData, action.payload)
-      console.log(filteredData)
-      return { filter: action.payload, sessions: [...filteredData] }
+      return { ...state, filter: action.payload }
     default: return state
   }
 }

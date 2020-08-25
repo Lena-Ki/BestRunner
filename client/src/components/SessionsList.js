@@ -4,13 +4,20 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Table } from 'rea
 import SessionItem from './SessionItem';
 import { sortField, filterField } from '../redux/actions'
 
-const SessionsList = ({sortField, filterField, ...props}) => {
+const SessionsList = ({sortField, filterField, filter, ...props}) => {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen(prevState => !prevState);
 
   let {sessions} = props
-  const items = sessions.map(item => <SessionItem item={item} key={item.id} />)
+  let items
+  if (filter === 'all')
+    items = sessions.map(item => <SessionItem item={item} key={item.id} />)
+  else {
+    items = sessions
+            .filter(item => item.type === filter)
+            .map(item => <SessionItem item={item} key={item.id} />)
+  }
 
   return (
     <Table>
@@ -23,10 +30,11 @@ const SessionsList = ({sortField, filterField, ...props}) => {
                 Activity
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem tag="a" href="/blah">Cycling</DropdownItem>
-                <DropdownItem tag="a" href="/blah">Jogging</DropdownItem>
-                <DropdownItem tag="a" href="/blah">Skiing</DropdownItem>
-                <DropdownItem tag="a" href="/blah">Walking</DropdownItem>
+                <DropdownItem tag="a" onClick={(e) => filterField(e.target.innerHTML.toLowerCase())}>All</DropdownItem>
+                <DropdownItem tag="a" onClick={(e) => filterField(e.target.innerHTML.toLowerCase())}>Cycling</DropdownItem>
+                <DropdownItem tag="a" onClick={(e) => filterField(e.target.innerHTML.toLowerCase())}>Jogging</DropdownItem>
+                <DropdownItem tag="a" onClick={(e) => filterField(e.target.innerHTML.toLowerCase())}>Skiing</DropdownItem>
+                <DropdownItem tag="a" onClick={(e) => filterField(e.target.innerHTML.toLowerCase())}>Walking</DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </th>
@@ -44,6 +52,7 @@ const SessionsList = ({sortField, filterField, ...props}) => {
 
 const mapStateToProps = state => {
   return {
+    filter: state.filter,
     sessions: state.sessions
   }
 }
