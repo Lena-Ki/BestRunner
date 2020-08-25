@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Button } from 'reactstrap';
+import { Container } from 'reactstrap';
 import SessionsList from '../components/SessionsList'
 
 // import { set } from 'mongoose';

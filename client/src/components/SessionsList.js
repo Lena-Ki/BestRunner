@@ -1,18 +1,36 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { connect } from 'react-redux'
-import { Table } from 'reactstrap';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Table } from 'reactstrap';
 import SessionItem from './SessionItem';
-import { sortField } from '../redux/actions'
+import { sortField, filterField } from '../redux/actions'
 
-const SessionsList = (props) => {
-  const items = props.sessions.map(item => <SessionItem item={item} key={item.id} />)
+const SessionsList = ({sortField, filterField, ...props}) => {
+
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggle = () => setDropdownOpen(prevState => !prevState);
+
+  let {sessions} = props
+  const items = sessions.map(item => <SessionItem item={item} key={item.id} />)
+
   return (
     <Table>
       <thead>
         <tr>
-          <th onClick={props.sortField.bind(null, 'date')}>Date</th>
-          <th>Activity</th>
-          <th onClick={props.sortField.bind(null, 'distance')}>Distance</th>
+          <th onClick={sortField.bind(null, 'date')}>Date</th>
+          <th>
+            <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+              <DropdownToggle tag="a" className="text-dark p-0" caret>
+                Activity
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem tag="a" href="/blah">Cycling</DropdownItem>
+                <DropdownItem tag="a" href="/blah">Jogging</DropdownItem>
+                <DropdownItem tag="a" href="/blah">Skiing</DropdownItem>
+                <DropdownItem tag="a" href="/blah">Walking</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </th>
+          <th onClick={sortField.bind(null, 'distance')}>Distance</th>
           <th>Comment</th>
           <th>Edit</th>
         </tr>
@@ -31,7 +49,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  sortField
+  sortField,
+  filterField
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SessionsList)

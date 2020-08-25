@@ -13,7 +13,7 @@ const SessionItem = ({deleteSession, ...props}) => {
 
   return (
     <tr>
-      <td scope="row">{sessionDate}</td>
+      <td>{sessionDate}</td>
       <td>{item.type}</td>
       <td>{item.distance} km</td>
       <td>{item.comment}</td>
