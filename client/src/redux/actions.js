@@ -1,8 +1,15 @@
-import { CREATE_SESSION, DELETE_SESSION, SORT_FIELD, FILTER_FIELD } from "./types";
+import { CREATE_SESSION, EDIT_SESSION, DELETE_SESSION, SORT_FIELD, FILTER_FIELD } from "./types";
 
 export function createSession(session) {
   return {
     type: CREATE_SESSION,
+    payload: session
+  }
+}
+
+export function editSession(session) {
+  return {
+    type: EDIT_SESSION,
     payload: session
   }
 }

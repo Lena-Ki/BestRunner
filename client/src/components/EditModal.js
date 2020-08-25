@@ -1,0 +1,49 @@
+import React from 'react';
+import { connect } from 'react-redux'
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { useFormik } from 'formik'
+import { editSession } from '../redux/actions'
+import { NewForm } from '../components/NewForm'
+
+const EditModal = (props) => {
+  const {
+    item,
+    modal,
+    toggle
+  } = props;
+
+  const formatDate = () => {
+    let parseDate = Date.parse(item.date)
+    return new Date(parseDate).toLocaleDateString("en-US", {year: 'numeric', month: 'short', day: 'numeric'})
+  }
+
+  const formik = useFormik({
+    initialValues: {
+      id: item.id,
+      date: new Date(item.date).toLocaleDateString('en-CA'),
+      type: item.type,
+      distance: item.distance,
+      comment: item.comment
+    },
+    onSubmit: (values) => {
+      props.editSession(values)
+    },
+  })
+
+  return (
+    <div>
+      <Modal isOpen={modal} toggle={toggle}>
+        <ModalHeader toggle={toggle}>Edit session of {formatDate()}</ModalHeader>
+        <ModalBody>
+          <NewForm formik={formik} toggle={toggle} trigger={'edit'}/>
+        </ModalBody>
+      </Modal>
+    </div>
+  );
+}
+
+const mapDispatchToProps = {
+  editSession
+}
+
+export default connect(null, mapDispatchToProps)(EditModal)
