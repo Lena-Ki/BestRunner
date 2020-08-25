@@ -9,7 +9,7 @@ export const SessionsPage = () => {
     <Container>
       <h1 className="mb-4">Session list</h1>
       <SessionsList />
-      <Button outline color="secondary">add new</Button>{' '}
+      {/* <Button outline color="secondary">add new</Button>{' '} */}
     </Container>
   )
 }

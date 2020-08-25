@@ -11,7 +11,7 @@ const SessionsList = (props) => {
       <thead>
         <tr>
           <th onClick={props.sortField.bind(null, 'date')}>Date</th>
-          <th>Type</th>
+          <th>Activity</th>
           <th onClick={props.sortField.bind(null, 'distance')}>Distance</th>
           <th>Comment</th>
           <th>Edit</th>

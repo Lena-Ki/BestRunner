@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { Container, TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
 import { SessionsPage } from './pages/SessionsPage'
 import SessionForm from './pages/SessionForm'
+import { NavLogo } from './components/NavLogo'
 import classnames from 'classnames';
 
 const App = ({ store }) => {
@@ -16,7 +17,7 @@ const App = ({ store }) => {
   return (
     <Provider store={store}>
       <Container className="w-75">
-        <Nav tabs className="mb-4">
+        <Nav tabs className="mb-4 d-flex align-items-center">
           <NavItem>
             <NavLink
               className={classnames({ active: activeTab === '1' })}
@@ -33,6 +34,7 @@ const App = ({ store }) => {
               Add new session
             </NavLink>
           </NavItem>
+          <NavLogo />
         </Nav>
         <TabContent activeTab={activeTab}>
           <TabPane tabId="1">
