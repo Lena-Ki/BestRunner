@@ -5,7 +5,6 @@ import { useFormik } from 'formik'
 import { createSession } from '../redux/actions'
 
 const SessionForm = (props) => {
-
   const formik = useFormik({
     initialValues: {
       date: '',
