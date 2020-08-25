@@ -1,4 +1,4 @@
-import { CREATE_SESSION, SORT_FIELD } from './types'
+import { CREATE_SESSION, DELETE_SESSION, SORT_FIELD } from './types'
 import _ from 'lodash'
 
 const initialState = {
@@ -9,7 +9,7 @@ const initialState = {
     {id: '1123', date: '20.08.2020', type: 'jogging', distance: '9.5', comment: '5 kkal burnt'},
     {id: '23', date: '18.08.2020', type: 'skiing', distance: '3.7', comment: 'freezing'},
     {id: '1', date: '29.08.2019', type: 'skiing', distance: '0.7', comment: 'freeze'},
-    {id: '9978564', date: '05.12.2020', type: 'walking', distance: '10', comment: 'time travelling'}
+    {id: '9978564', date: '05.12.2020', type: 'walking', distance: '10.0', comment: 'time travelling'}
   ]
 }
 
@@ -23,6 +23,10 @@ export const rootReducer = (state = initialState, action) => {
       const orderedData = _.orderBy(cloneData, action.payload, sortType)
       console.log(orderedData)
       return { sort: sortType, sessions: [...orderedData] }
+    case DELETE_SESSION:
+      return { sessions: state.sessions.filter(item => {
+        return item.id !== action.payload
+      })}
     default: return state
   }
 }

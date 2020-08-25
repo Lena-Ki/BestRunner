@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Table } from 'reactstrap';
-import { SessionItem } from './SessionItem';
+import SessionItem from './SessionItem';
 import { sortField } from '../redux/actions'
 
 const SessionsList = (props) => {
@@ -14,6 +14,7 @@ const SessionsList = (props) => {
           <th>Type</th>
           <th onClick={props.sortField.bind(null, 'distance')}>Distance</th>
           <th>Comment</th>
+          <th>Edit</th>
         </tr>
       </thead>
       <tbody>

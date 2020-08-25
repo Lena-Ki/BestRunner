@@ -1,5 +1,4 @@
-import { CREATE_SESSION } from "./types";
-import { SORT_FIELD } from "./types";
+import { CREATE_SESSION, DELETE_SESSION, SORT_FIELD } from "./types";
 
 export function createSession(session) {
   return {
@@ -12,5 +11,12 @@ export function sortField(field) {
   return {
     type: SORT_FIELD,
     payload: field
+  }
+}
+
+export function deleteSession(id) {
+  return {
+    type: DELETE_SESSION,
+    payload: id
   }
 }
