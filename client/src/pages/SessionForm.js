@@ -7,7 +7,7 @@ import { createSession } from '../redux/actions'
 const SessionForm = (props) => {
   const formik = useFormik({
     initialValues: {
-      date: '',
+      date: new Date().toLocaleDateString('en-CA'),
       type: 'jogging',
       distance: '',
       comment: ''
@@ -54,6 +54,8 @@ const SessionForm = (props) => {
           <Input
             id="distance"
             type="number"
+            step="0.1"
+            min="0"
             name="distance"
             onChange={formik.handleChange}
             value={formik.values.number}

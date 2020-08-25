@@ -6,9 +6,14 @@ import { deleteSession } from '../redux/actions'
 
 const SessionItem = ({deleteSession, ...props}) => {
   let {item} = props
+  
+  // create a function here
+  let parseDate = Date.parse(item.date)
+  let sessionDate = new Date(parseDate).toLocaleDateString("en-US", {year: 'numeric', month: 'short', day: 'numeric'})
+
   return (
     <tr>
-      <th scope="row">{item.date}</th>
+      <th scope="row">{sessionDate}</th>
       <td>{item.type}</td>
       <td>{item.distance} km</td>
       <td>{item.comment}</td>
