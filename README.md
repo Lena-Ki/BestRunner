@@ -20,6 +20,7 @@ npm run start
 ```
 
 You can now open http://localhost:3000/ to see the app
+There are some initial values provided if nothing is stored in LocalStorage - delete them to start from scratch.
 
 ## Built With
 
