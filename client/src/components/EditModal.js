@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { useFormik } from 'formik'
 import { editSession } from '../redux/actions'
-import { NewForm } from '../components/NewForm'
+import { FormReusable } from './FormReusable'
 
 const EditModal = (props) => {
   const {
@@ -35,15 +35,13 @@ const EditModal = (props) => {
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Edit session of {formatDate()}</ModalHeader>
         <ModalBody>
-          <NewForm formik={formik} toggle={toggle} trigger={'edit'}/>
+          <FormReusable formik={formik} toggle={toggle} trigger={'edit'}/>
         </ModalBody>
       </Modal>
     </div>
-  );
+  )
 }
 
-const mapDispatchToProps = {
-  editSession
-}
+const mapDispatchToProps = { editSession }
 
 export default connect(null, mapDispatchToProps)(EditModal)

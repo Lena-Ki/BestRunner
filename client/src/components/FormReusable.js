@@ -2,13 +2,12 @@ import React from 'react'
 import { Form, FormGroup, Label, Input, Row, Col, Button } from 'reactstrap'
 import {StyledInput} from './StyledInput'
 
-export const NewForm = (props) => {
+export const FormReusable = (props) => {
   const {
     formik,
     toggle = null,
     trigger = 'new'
   } = props
-  console.log(formik.values)
 
   let button
   // create confirm button

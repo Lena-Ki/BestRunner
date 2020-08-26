@@ -40,8 +40,6 @@ const SessionItem = ({deleteSession, ...props}) => {
   )
 }
 
-const mapDispatchToProps = {
-  deleteSession
-}
+const mapDispatchToProps = { deleteSession }
 
 export default connect(null, mapDispatchToProps)(SessionItem)

@@ -26,11 +26,13 @@ const SessionsList = ({sortField, filterField, filter, ...props}) => {
       <thead>
         <tr>
           <th
+            className="dropdown-toggle"
             onClick={sortField.bind(null, 'date')}
             style={{width: '18%'}}
           >
             Date
           </th>
+          {/* 'activity' filter dropdown */}
           <th>
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
               <DropdownToggle tag="a" className="text-dark p-0" caret>
@@ -45,7 +47,10 @@ const SessionsList = ({sortField, filterField, filter, ...props}) => {
               </DropdownMenu>
             </Dropdown>
           </th>
-          <th onClick={sortField.bind(null, 'distance')}>
+          <th
+            className="dropdown-toggle"
+            onClick={sortField.bind(null, 'distance')}
+          >
               Distance
           </th>
           <th style={{width: '25%'}}>
@@ -70,9 +75,6 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = {
-  sortField,
-  filterField
-}
+const mapDispatchToProps = { sortField, filterField }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SessionsList)
