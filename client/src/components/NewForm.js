@@ -6,17 +6,19 @@ export const NewForm = (props) => {
   const {
     formik,
     toggle = null,
-    trigger = null
+    trigger = 'new'
   } = props
+  console.log(formik.values)
 
   let button
   // create confirm button
-  if (trigger === 'edit')
+  if (trigger === 'edit') {
     button = (
-    <Button onClick={toggle} block outline color="success" type="submit">
+      <Button onClick={toggle} block outline color="success" type="submit">
       Edit
     </Button>
-  )
+    )
+  }
   else {
     button = (
       <Button block outline color="success" type="submit">
@@ -26,13 +28,13 @@ export const NewForm = (props) => {
   }
 
   return (
-    <Form onSubmit={formik.handleSubmit}>
+    <Form className="form" onSubmit={formik.handleSubmit}>
       <FormGroup>
         <Row form>
           <Col md={5}>
-            <Label for="date">Session date</Label>
+            <Label for={trigger + "date"}>Session date</Label>
             <Input
-              id="date"
+              id={trigger + "date"}
               type="date"
               name="date"
               onChange={formik.handleChange}
@@ -40,9 +42,9 @@ export const NewForm = (props) => {
             />
           </Col>
           <Col md={7}>
-            <Label for="type">Activity type</Label>
+            <Label for={trigger + "type"}>Activity type</Label>
             <Input
-              id="type"
+              id={trigger + "type"}
               type="select"
               name="type"
               onChange={formik.handleChange.bind(this)}
@@ -57,9 +59,9 @@ export const NewForm = (props) => {
         </Row>
       </FormGroup>
       <FormGroup>
-        <Label for="date">Extra info</Label>
+        <Label for={trigger + "comment"}>Extra info</Label>
         <Input
-          id="comment"
+          id={trigger + "comment"}
           type="textarea"
           name="comment"
           onChange={formik.handleChange}
@@ -68,9 +70,9 @@ export const NewForm = (props) => {
       </FormGroup>
       <FormGroup className="d-flex justify-content-around">
         <Col sm={5}>
-          <Label for="distance">Distance</Label>
+          <Label for={trigger + "distance"}>Distance</Label>
           <StyledInput
-            id="distance"
+            id={trigger + "distance"}
             type="number"
             required
             step="0.1"
@@ -78,7 +80,7 @@ export const NewForm = (props) => {
             name="distance"
             placeholder="km"
             onChange={formik.handleChange}
-            value={formik.values.number}
+            value={formik.values.distance}
           />
         </Col>
       </FormGroup>
