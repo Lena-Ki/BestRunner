@@ -9,7 +9,7 @@ const initialState = {
     {id: '2123471483', date: '2020.09.18', type: 'skiing', distance: 3.7, comment: 'freezing'},
     {id: '1123481741', date: '2020.08.23', type: 'jogging', distance: 9.5, comment: '5 kkal burnt'},
     {id: '1239921311', date: '2019.08.25', type: 'skiing', distance: 0.7, comment: 'freeze'},
-    {id: '9978564124', date: '2020.05.12', type: 'walking', distance: 10.0, comment: 'time travelling'},
+    {id: '9978564124', date: '2020.12.12', type: 'walking', distance: 10.0, comment: 'time travelling'},
     {id: '1212421473', date: '2020.09.20', type: 'cycling', distance: 5.6, comment: 'in the city center'},
   ]
 }
