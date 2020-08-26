@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import { Container, TabContent, TabPane, Col } from 'reactstrap';
 import { HeaderNav } from './components/HeaderNav'
-import { SessionsPage } from './pages/SessionsPage'
+import SessionsPage from './pages/SessionsPage'
 import AddSessionPage from './pages/AddSessionPage'
 import { sortField } from './redux/actions';
 
