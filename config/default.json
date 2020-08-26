@@ -1,4 +1,0 @@
-{
-  "port": "5000",
-  "mongoUri": "mongodb+srv://Lena:ATZ4BR@cluster0.4kgod.azure.mongodb.net/<dbname>?retryWrites=true&w=majority"
-}
