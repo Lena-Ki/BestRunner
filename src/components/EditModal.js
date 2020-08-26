@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { useFormik } from 'formik'
-import { editSession } from '../redux/actions'
+import { editSession, sortField } from '../redux/actions'
 import { FormReusable } from './FormReusable'
 
 const EditModal = (props) => {
@@ -42,6 +42,6 @@ const EditModal = (props) => {
   )
 }
 
-const mapDispatchToProps = { editSession }
+const mapDispatchToProps = { editSession, sortField }
 
 export default connect(null, mapDispatchToProps)(EditModal)

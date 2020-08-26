@@ -1,4 +1,10 @@
-import { CREATE_SESSION, EDIT_SESSION, DELETE_SESSION, SORT_FIELD, FILTER_FIELD } from "./types";
+import { FETCH_SESSIONS, CREATE_SESSION, EDIT_SESSION, DELETE_SESSION, SORT_FIELD, FILTER_FIELD } from "./types";
+
+export function fetchSessions() {
+  return {
+    type: FETCH_SESSIONS,
+  }
+}
 
 export function createSession(session) {
   return {

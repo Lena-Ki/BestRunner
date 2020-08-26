@@ -1,4 +1,4 @@
-import { CREATE_SESSION, EDIT_SESSION, DELETE_SESSION, SORT_FIELD, FILTER_FIELD } from './types'
+import { FETCH_SESSIONS, CREATE_SESSION, EDIT_SESSION, DELETE_SESSION, SORT_FIELD, FILTER_FIELD } from './types'
 import _ from 'lodash'
 
 const initialState = {
@@ -14,24 +14,36 @@ const initialState = {
   ]
 }
 
+let newState
+
 export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    // fetch localStorage
+    case FETCH_SESSIONS:
+      let data = JSON.parse(localStorage.getItem('state')) || initialState
+      return { ...data }
+
     // create new session
     case CREATE_SESSION:
-      return { ...state, sessions: [...state.sessions, action.payload]}
+      newState = [...state.sessions, action.payload]
+      localStorage.setItem('state', JSON.stringify({...state, sessions: newState}))
+      return { ...state, sessions: newState}
 
     // edit existing session
     case EDIT_SESSION:
-      let newSessions = state.sessions.filter(item => {
+      newState = state.sessions.filter(item => {
         return item.id !== action.payload.id
       })
-      return { ...state, sessions: [...newSessions, action.payload]}
+      localStorage.setItem('state', JSON.stringify({...state, sessions: [...newState, action.payload]}))
+      return { ...state, sessions: [...newState, action.payload]}
 
     // delete selected session
     case DELETE_SESSION:
-      return { ...state, sessions: state.sessions.filter(item => {
+      newState = state.sessions.filter(item => {
         return item.id !== action.payload
-      })}
+      })
+      localStorage.setItem('state', JSON.stringify({...state, sessions: newState}))
+      return { ...state, sessions: newState}
 
     // sort sessions by field types
     case SORT_FIELD:

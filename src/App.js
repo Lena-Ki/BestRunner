@@ -5,7 +5,7 @@ import { Container, TabContent, TabPane, Col } from 'reactstrap';
 import { HeaderNav } from './components/HeaderNav'
 import SessionsPage from './pages/SessionsPage'
 import AddSessionPage from './pages/AddSessionPage'
-import { sortField } from './redux/actions';
+import { fetchSessions, sortField } from './redux/actions';
 
 const App = ({ store }) => {
 
@@ -15,6 +15,7 @@ const App = ({ store }) => {
     if(activeTab !== tab) setActiveTab(tab);
   }
 
+  store.dispatch(fetchSessions());
   store.dispatch(sortField('date'));
 
   return (
