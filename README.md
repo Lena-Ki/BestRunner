@@ -36,6 +36,6 @@ There are some initial values provided if nothing is stored in LocalStorage - de
 
 [Lena-Ki](https://github.com/Lena-Ki)
 
-## Acknowledgments
+## Additional information
 
 * Further improvement will be made using full MERN stack
