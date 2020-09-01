@@ -1,6 +1,10 @@
 # BestRunner
 Sports tracker app using React, Redux, styled with Reactstrap
 
+## Demo
+
+Watch [demo](https://lena-ki.github.io/BestRunner/)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine.
